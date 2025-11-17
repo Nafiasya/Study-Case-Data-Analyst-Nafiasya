@@ -73,6 +73,11 @@ Indikator kategorikal:
 
 <img width="382" height="194" alt="image" src="https://github.com/user-attachments/assets/70a14907-bfcb-4cac-91ab-6592b5be6578" />
 
+maka dari itu didapatkan formula tv_match_rate sebagai berikut
+
+<img width="941" height="291" alt="image" src="https://github.com/user-attachments/assets/6d573237-4239-4efa-bf88-7cf77e6c5ff6" />
+
+
 2. TGV Match Rate
 
 TGV Match Rate dihitung dari tiga indikator kategorikal yang masing-masing mewakili dimensi psikologis lain.
@@ -83,6 +88,8 @@ Setiap indikator bernilai 100% jika cocok, dan 0 jika tidak:
 TGV Match Rate dihitung dengan rata-rata:
 
 <img width="612" height="79" alt="image" src="https://github.com/user-attachments/assets/8075d93d-665c-49ef-ba99-8f67aff4cc7a" />
+
+<img width="941" height="166" alt="image" src="https://github.com/user-attachments/assets/78cbb922-19f8-4f82-8097-22b73285e091" />
 
 3. Employee Match Rate
 Employee Match Rate menggunakan empat variabel, masing-masing memiliki bobot 25%.
@@ -95,6 +102,9 @@ b. Variabel Kategorikal
 Diberikan skor 100% jika cocok, dan 0 jika tidak:
 
 <img width="313" height="209" alt="image" src="https://github.com/user-attachments/assets/04c3f6d3-25b0-470c-8357-6d6d531bf7cb" />
+
+<img width="587" height="413" alt="image" src="https://github.com/user-attachments/assets/ebd399c0-0c1e-490a-ba46-9a6001f2c8cc" />
+
 
 Masing-masing variabel dikalikan bobot 0.25, lalu dijumlahka
 
