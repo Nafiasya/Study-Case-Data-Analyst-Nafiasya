@@ -64,14 +64,16 @@ Empat variabel numerik dievaluasi dengan prinsip:
   
   Indikator numerik yang digunakan:
   
-  <img width="303" height="241" alt="image" src="https://github.com/user-attachments/assets/013bcb56-b48f-4d6f-9aae-4117be79e6cc" />
+  <img width="669" height="255" alt="image" src="https://github.com/user-attachments/assets/74a56c9e-ca93-4394-9849-a9fb4d530eb3" />
+
 
 b. Indikator Kategorikal (Exact Match)
 Tiga variabel kategorikal diberikan skor 100% apabila exact match dengan benchmark talent, dan 0% bila tidak cocok.
 
 Indikator kategorikal:
 
-<img width="382" height="194" alt="image" src="https://github.com/user-attachments/assets/70a14907-bfcb-4cac-91ab-6592b5be6578" />
+<img width="605" height="204" alt="image" src="https://github.com/user-attachments/assets/0aa9ce7b-dcf6-4c18-aaa6-d58991e73d11" />
+
 
 maka dari itu didapatkan formula tv_match_rate sebagai berikut
 
