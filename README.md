@@ -85,7 +85,8 @@ maka dari itu didapatkan formula tv_match_rate sebagai berikut
 TGV Match Rate dihitung dari tiga indikator kategorikal yang masing-masing mewakili dimensi psikologis lain.
 Setiap indikator bernilai 100% jika cocok, dan 0 jika tidak:
 
-<img width="543" height="203" alt="image" src="https://github.com/user-attachments/assets/0e422c78-2651-4748-a4cb-d38777c6a5b8" />
+<img width="782" height="205" alt="image" src="https://github.com/user-attachments/assets/6eed83fe-a56c-4b5e-aac8-45fc2dc3a1cd" />
+
 
 TGV Match Rate dihitung dengan rata-rata:
 
