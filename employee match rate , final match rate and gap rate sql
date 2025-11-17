@@ -1,0 +1,87 @@
+-- Buat tabel employee_benchmark 
+CREATE TABLE employee_benchmark (
+    employee_id VARCHAR(50) PRIMARY KEY,
+    years_of_service_months INTEGER,
+    directorate_id INTEGER,
+    area_id INTEGER,
+    company_id INTEGER,
+    tv_weight_total DECIMAL(10,4),
+    tgv_weight_total DECIMAL(10,4)
+);
+
+-- Insert data dari join multiple tabel
+INSERT INTO employee_benchmark (
+    employee_id,
+    years_of_service_months,
+    directorate_id,
+    area_id,
+    company_id,
+    tv_weight_total,
+    tgv_weight_total
+)
+SELECT 
+    e.employee_id,
+    e.years_of_service_months,
+    e.directorate_id::INTEGER,
+    e.area_id::INTEGER,
+    e.company_id::INTEGER,
+    tv.tv_weight_total,
+    tgv.tgv_weight_total
+FROM employees e
+LEFT JOIN tv_weight tv ON e.employee_id = tv.employee_id
+LEFT JOIN tgv_weight tgv ON e.employee_id = tgv.employee_id;
+
+---- menghitung emlpoyee_rate
+ALTER TABLE employee_benchmark ADD COLUMN employee_match_rate DECIMAL(5,2);
+UPDATE employee_benchmark 
+SET employee_match_rate = (
+    -- Numeric fields dengan rule: jika nilai >= benchmark = 100%, else (nilai/benchmark)*100
+    (CASE WHEN years_of_service_months >= 109 THEN 100.0 ELSE (years_of_service_months / 109.0) * 100 END) * 0.166667 +
+    (CASE WHEN directorate_id = 1 THEN 100.0 ELSE 0 END) * 0.166667 +
+    (CASE WHEN area_id = 2 THEN 100.0 ELSE 0 END) * 0.166667 +
+    (CASE WHEN company_id = 4 THEN 100.0 ELSE 0 END) * 0.166667 +
+    (CASE WHEN tv_weight_total >= 0.8876 THEN 100.0 ELSE (tv_weight_total / 0.8876) * 100 END) * 0.166667 +
+    (CASE WHEN tgv_weight_total >= 1.0000 THEN 100.0 ELSE (tgv_weight_total / 1.0000) * 100 END) * 0.166667
+);
+
+--- join kolom tv_match rate pada tabel tv_weight dan kolom tgv_match_rate pada tabel tgv_weight 
+--ke tabel employee_benchmark
+
+-- Tambahkan kolom untuk tv_match_rate dan tgv_match_rate
+ALTER TABLE employee_benchmark 
+ADD COLUMN tv_match_rate DECIMAL(5,2),
+ADD COLUMN tgv_match_rate DECIMAL(5,2);
+
+-- Update data dengan JOIN ke kedua tabel
+-- Update tv_match_rate menggunakan subquery
+UPDATE employee_benchmark 
+SET tv_match_rate = (
+    SELECT tv_match_rate 
+    FROM tv_weight 
+    WHERE tv_weight.employee_id = employee_benchmark.employee_id
+);
+
+-- Update tgv_match_rate menggunakan subquery
+UPDATE employee_benchmark 
+SET tgv_match_rate = (
+    SELECT tgv_match_rate 
+    FROM tgv_weight 
+    WHERE tgv_weight.employee_id = employee_benchmark.employee_id
+);
+
+--menghitung final match rate
+ALTER TABLE employee_benchmark ADD COLUMN final_match_rate DECIMAL(5,2);
+UPDATE employee_benchmark 
+SET final_match_rate = (
+    COALESCE(employee_match_rate, 0) + 
+    COALESCE(tv_match_rate, 0) + 
+    COALESCE(tgv_match_rate, 0)
+) / 3;
+
+
+
+-- membuat kolom gap match rate
+ALTER TABLE employee_benchmark ADD COLUMN gap_match_rate DECIMAL(5,2);
+UPDATE employee_benchmark 
+SET gap_match_rate = 100 - COALESCE(final_match_rate, 0);
+
