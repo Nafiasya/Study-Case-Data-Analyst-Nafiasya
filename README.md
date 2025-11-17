@@ -207,6 +207,146 @@ Melalui visualisasi heatmap, setiap variabel dianalisis secara individual untuk 
 
 a. years_of_service_months
 
+<img width="692" height="369" alt="image" src="https://github.com/user-attachments/assets/1ea33414-2811-4638-9754-d178db2250e7" />
+
+<img width="570" height="499" alt="image" src="https://github.com/user-attachments/assets/7ebee7bf-2d7c-45ac-aac3-13cdf6cb463e" />
+
+<img width="523" height="279" alt="image" src="https://github.com/user-attachments/assets/ba49ca2c-8a42-4d2e-a1f9-74b015d8be34" />
+
+b. education_id
+
+<img width="572" height="356" alt="image" src="https://github.com/user-attachments/assets/2194d1f9-e7f7-42d9-9efb-d5042361d59b" />
+
+<img width="367" height="365" alt="image" src="https://github.com/user-attachments/assets/7bdb169d-398e-4780-88a1-464cb6ed346b" />
+
+
+c. directorate_id
+
+
+<img width="651" height="340" alt="image" src="https://github.com/user-attachments/assets/f6c3d41e-66fe-4db7-865a-5616bb92af4d" />
+
+
+<img width="357" height="286" alt="image" src="https://github.com/user-attachments/assets/d3b7809b-705e-4bbf-b390-408fa00f279c" />
+
+d. area_id
+
+
+<img width="569" height="259" alt="image" src="https://github.com/user-attachments/assets/01589eef-c38e-4660-894d-29cbc9ed56a0" />
+
+
+<img width="315" height="359" alt="image" src="https://github.com/user-attachments/assets/a802b162-0efb-457f-99e0-bb242de63226" />
+
+e. company_id
+
+
+<img width="637" height="333" alt="image" src="https://github.com/user-attachments/assets/7063369a-35da-4bfb-ad4a-5b04b29f3954" />
+
+
+<img width="814" height="245" alt="image" src="https://github.com/user-attachments/assets/bccb25f7-649c-4f67-917e-00535268c4d7" />
+
+e. tiki
+
+
+<img width="632" height="333" alt="image" src="https://github.com/user-attachments/assets/8e7886d9-5d95-408a-9a11-f837b7ac3a7f" />
+
+
+<img width="685" height="358" alt="image" src="https://github.com/user-attachments/assets/ee38c451-99e5-4521-9c42-de68b1dbec01" />
+
+
+<img width="318" height="284" alt="image" src="https://github.com/user-attachments/assets/644459d2-1aa6-4ac8-be55-c28bec06b757" />
+
+f. mbti
+
+
+<img width="657" height="413" alt="image" src="https://github.com/user-attachments/assets/7af504be-f6e2-4d54-8a81-ae8c6b8a9c48" />
+
+
+<img width="319" height="720" alt="image" src="https://github.com/user-attachments/assets/2874c7b5-e49c-4ccc-baf3-93a09c34740b" />
+
+
+g. pauli
+
+
+<img width="622" height="471" alt="image" src="https://github.com/user-attachments/assets/1a22334d-94fd-40ac-a878-4f39e410e60c" />
+
+
+<img width="314" height="273" alt="image" src="https://github.com/user-attachments/assets/a8309340-672b-46e4-bdcc-dac640eba5b9" />
+
+h. faxtor
+
+<img width="569" height="513" alt="image" src="https://github.com/user-attachments/assets/96227487-d600-4f06-b6ed-53754129c1a2" />
+
+
+<img width="399" height="149" alt="image" src="https://github.com/user-attachments/assets/9296098d-9222-44f5-890a-309ab5316dc2" />
+
+i. rank
+
+
+<img width="701" height="370" alt="image" src="https://github.com/user-attachments/assets/571a800e-ccff-4928-937c-0e6b454623c1" />
+
+
+<img width="579" height="532" alt="image" src="https://github.com/user-attachments/assets/2a8daaff-769d-40a5-92cb-713f0f3d320d" />
+
+
+<img width="412" height="157" alt="image" src="https://github.com/user-attachments/assets/e56f8b75-97e2-4d1b-bc6e-608d9e30e9d8" />
+
+j.papi_score
+
+
+<img width="633" height="333" alt="image" src="https://github.com/user-attachments/assets/63cd06d1-acce-4639-b5c5-81afa0e04450" />
+
+
+<img width="628" height="552" alt="image" src="https://github.com/user-attachments/assets/5bab3cb5-e9d6-4fe1-bfa3-f2116624af42" />
+
+
+<img width="449" height="193" alt="image" src="https://github.com/user-attachments/assets/cf88f022-6351-471f-aa8f-900afa6eafff" />
+
+
+k. theme
+
+
+<img width="941" height="657" alt="image" src="https://github.com/user-attachments/assets/f3c96327-2f30-47f3-ae60-8a367f8210be" />
+
+
+<img width="515" height="772" alt="image" src="https://github.com/user-attachments/assets/4456cdbd-6749-448b-99ac-4b8284f92d91" />
+
+<img width="502" height="76" alt="image" src="https://github.com/user-attachments/assets/ee598e53-01d2-49cb-bc29-51381157c69c" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
