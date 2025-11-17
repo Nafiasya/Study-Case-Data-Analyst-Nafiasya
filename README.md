@@ -200,6 +200,19 @@ Berdasarkan hasil analisis, variabel–variabel dari kelompok papi_score dan str
 2. PAPI Score
 3. Theme
 
+3. Analisa Heatmap per variabel
+Analisis heatmap per variabel dilakukan untuk memperoleh pemahaman yang lebih mendalam mengenai pola hubungan antara masing-masing variabel dengan kategori rating = 5 (category = 1). Pendekatan ini memungkinkan identifikasi yang lebih terperinci terhadap rentang nilai variabel yang memiliki probabilitas tinggi dalam memengaruhi peluang seorang karyawan masuk ke kategori rating 5.
+
+Melalui visualisasi heatmap, setiap variabel dianalisis secara individual untuk melihat intensitas korelasinya dan menentukan nilai-nilai spesifik yang berpotensi memberikan kontribusi signifikan terhadap pencapaian category = 1. Pendekatan ini membantu memastikan bahwa evaluasi dilakukan tidak hanya pada tingkat agregat, tetapi juga mempertimbangkan variasi nilai di dalam setiap variabel, sehingga menghasilkan insight yang lebih akurat dan actionable untuk pengambilan keputusan berbasis data.
+
+a. years_of_service_months
+
+
+
+
+
+
+
 
 
 
