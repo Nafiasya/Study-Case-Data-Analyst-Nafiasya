@@ -1,0 +1,141 @@
+CREATE TABLE tgv_weight AS
+SELECT DISTINCT ON (p.employee_id)
+    p.employee_id,
+    p.mbti AS tgv_mbti,
+    p.disc_word AS tgv_disc_word,
+    s.theme AS tgv_theme
+FROM profiles_psych p
+LEFT JOIN strengths s 
+    ON p.employee_id = s.employee_id
+ORDER BY p.employee_id;
+
+ALTER TABLE tgv_weight 
+ADD PRIMARY KEY (employee_id);
+
+-- buat kolom baru pada tabel tgv_weight dengan nama kolom tgv_mbti_weight 
+--dengan kreteria nilai sama dengan tabel tv_weight kolom mbti_tv_weight
+ALTER TABLE tgv_weight
+ADD COLUMN tgv_mbti_weight NUMERIC;
+
+UPDATE tgv_weight t
+SET tgv_mbti_weight = tv.mbti_tv_weight
+FROM tv_weight tv
+WHERE t.employee_id = tv.employee_id;
+
+--revisi kolom tv_disc_word sehingga cuma diambil kata pertamanya saja
+UPDATE tgv_weight
+SET tgv_disc_word = split_part(tgv_disc_word, '-', 1);
+
+-- Update kolom tgv_disc_word sesuai mapping
+UPDATE tgv_weight
+SET tgv_disc_word =
+    CASE 
+        WHEN tgv_disc_word = 'Perceiving' THEN 'Flexibility & Adaptability'
+        WHEN tgv_disc_word = 'Dominant' THEN 'Leadership & Influence'
+        WHEN tgv_disc_word = 'Influencer' THEN 'Social Orientation & Collaboration'
+        WHEN tgv_disc_word = 'Steadiness' THEN 'Adaptability & Stress Tolerance'
+        WHEN tgv_disc_word = 'Compliance' THEN 'Conscientiousness & Reliability'
+        WHEN tgv_disc_word = 'Conscientious' THEN 'Conscientiousness & Reliability'
+        ELSE tgv_disc_word
+    END;
+
+	---- Tambah kolom baru disc word weight
+ALTER TABLE tgv_weight 
+ADD COLUMN disc_word_weight INT;
+
+UPDATE tgv_weight 
+SET disc_word_weight = CASE 
+    WHEN tgv_disc_word = 'Social Orientation & Collaboration' THEN 1 
+    ELSE 0 
+END;
+
+-- mengubah mbti sesuai dengan mapping tgv
+ALTER TABLE tgv_weight 
+ALTER COLUMN tgv_mbti TYPE VARCHAR(100);
+
+UPDATE tgv_weight 
+SET tgv_mbti = CASE 
+    WHEN SUBSTRING(tgv_mbti, 2, 1) = 'S' THEN 'Practical & Detail Orientation'
+    ELSE 'Creativity & Innovation Orientation'
+END;
+
+---- ubah nilai kolom theme sesuai tgv
+UPDATE tgv_weight 
+SET tgv_theme = CASE 
+    WHEN tgv_theme = 'Achiever' THEN 'Motivation & Drive'
+    WHEN tgv_theme = 'Arranger' THEN 'Leadership & Influence'
+    WHEN tgv_theme = 'Belief' THEN 'Cultural & Values Urgency'
+    WHEN tgv_theme = 'Consistency' THEN 'Conscientiousness & Reliability'
+    WHEN tgv_theme = 'Deliberative' THEN 'Conscientiousness & Reliability'
+    WHEN tgv_theme = 'Discipline' THEN 'Conscientiousness & Reliability'
+    WHEN tgv_theme = 'Focus' THEN 'Motivation & Drive'
+    WHEN tgv_theme = 'Responsibility' THEN 'Conscientiousness & Reliability'
+    WHEN tgv_theme = 'Restorative' THEN 'Cognitive Complexity & Problem-Solving'
+    WHEN tgv_theme = 'Activator' THEN 'Leadership & Influence'
+    WHEN tgv_theme = 'Command' THEN 'Leadership & Influence'
+    WHEN tgv_theme = 'Communication' THEN 'Social Orientation & Collaboration'
+    WHEN tgv_theme = 'Competition' THEN 'Motivation & Drive'
+    WHEN tgv_theme = 'Maximizer' THEN 'Leadership & Influence'
+    WHEN tgv_theme = 'Self-Assurance' THEN 'Leadership & Influence'
+    WHEN tgv_theme = 'Significance' THEN 'Motivation & Drive'
+    WHEN tgv_theme = 'Woo' THEN 'Social Orientation & Collaboration'
+    WHEN tgv_theme = 'Adaptability' THEN 'Adaptability & Stress Tolerance'
+    WHEN tgv_theme = 'Connectedness' THEN 'Cognitive Complexity & Problem-Solving'
+    WHEN tgv_theme = 'Developer' THEN 'Leadership & Influence'
+    WHEN tgv_theme = 'Empathy' THEN 'Social Orientation & Collaboration'
+    WHEN tgv_theme = 'Harmony' THEN 'Social Orientation & Collaboration'
+    WHEN tgv_theme = 'Includer' THEN 'Social Orientation & Collaboration'
+    WHEN tgv_theme = 'Individualization' THEN 'Cognitive Complexity & Problem-Solving'
+    WHEN tgv_theme = 'Positivity' THEN 'Social Orientation & Collaboration'
+    WHEN tgv_theme = 'Relator' THEN 'Social Orientation & Collaboration'
+    WHEN tgv_theme = 'Analytical' THEN 'Cognitive Complexity & Problem-Solving'
+    WHEN tgv_theme = 'Context' THEN 'Cognitive Complexity & Problem-Solving'
+    WHEN tgv_theme = 'Futuristic' THEN 'Creativity & Innovation Orientation'
+    WHEN tgv_theme = 'Ideation' THEN 'Creativity & Innovation Orientation'
+    WHEN tgv_theme = 'Input' THEN 'Cognitive Complexity & Problem-Solving'
+    WHEN tgv_theme = 'Intellection' THEN 'Cognitive Complexity & Problem-Solving'
+    WHEN tgv_theme = 'Learner' THEN 'Cognitive Complexity & Problem-Solving'
+    WHEN tgv_theme = 'Strategic' THEN 'Cognitive Complexity & Problem-Solving'
+    ELSE NULL -- Untuk nilai yang tidak ada dalam mapping, diubah menjadi NULL
+END;
+
+--buat kolom theme tgv weight
+-- Tambahkan kolom baru
+ALTER TABLE tgv_weight 
+ADD COLUMN theme_tgv_weight INTEGER;
+
+-- Update nilai kolom baru berdasarkan ketentuan
+UPDATE tgv_weight 
+SET theme_tgv_weight = CASE 
+    WHEN tgv_theme = 'Cognitive Complexity & Problem-Solving' THEN 1
+    ELSE 0
+END;
+
+--rename kolom
+-- Rename kolom pertama
+ALTER TABLE tgv_weight 
+RENAME COLUMN tgv_mbti_weight TO mbti_tgv_weight;
+
+-- Rename kolom kedua
+ALTER TABLE tgv_weight 
+RENAME COLUMN disc_word_weight TO disc_word_tgv_weight;
+
+--hitung weight tgv total
+-- Tambahkan kolom baru
+ALTER TABLE tgv_weight 
+ADD COLUMN tgv_weight_total DECIMAL(10,4);
+
+-- Update nilai dengan rata-rata dari tiga kolom
+UPDATE tgv_weight 
+SET tgv_weight_total = (mbti_tgv_weight + disc_word_tgv_weight + theme_tgv_weight) / 3.0;
+
+--- tgv match rate
+ALTER TABLE tgv_weight ADD COLUMN tgv_match_rate DECIMAL(5,2);
+UPDATE tgv_weight 
+SET tgv_match_rate = (
+    (CASE WHEN tgv_mbti = 'Practical & Detail Orientation' THEN 100.0 ELSE 0 END) +
+    (CASE WHEN tgv_disc_word = 'Social Orientation & Collaboration' THEN 100.0 ELSE 0 END) +
+    (CASE WHEN tgv_theme = 'Cognitive Complexity & Problem-Solving' THEN 100.0 ELSE 0 END)
+) / 3;
+
+
