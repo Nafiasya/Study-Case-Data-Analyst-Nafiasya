@@ -1,0 +1,170 @@
+CREATE TABLE tv_weight AS
+SELECT DISTINCT ON (p.employee_id)
+    p.employee_id,
+    p.tiki AS tv_tiki,
+    p.pauli AS tv_pauli,
+    p.faxtor AS tv_faxtor,
+    p.mbti AS tv_mbti,
+    p.disc_word AS tv_disc_word,
+    ps.score AS tv_papi_score,
+    s.theme AS tv_theme
+FROM profiles_psych p
+LEFT JOIN papi_scores ps 
+    ON p.employee_id = ps.employee_id
+LEFT JOIN strengths s 
+    ON p.employee_id = s.employee_id
+ORDER BY p.employee_id;
+
+ADD PRIMARY KEY (employee_id);
+
+ALTER TABLE tv_weight ALTER TABLE tv_weight 
+ADD COLUMN mbti_tv_weight INTEGER,
+ADD COLUMN disc_word_tv_weight INTEGER,
+ADD COLUMN theme_tv_weight INTEGER;
+
+--rank kelupaan, tambahkan kolom rank dari tabel strenghts dulu 
+
+ALTER TABLE tv_weight 
+ADD COLUMN rank INTEGER;
+
+UPDATE tv_weight tv
+SET rank = s.rank
+FROM strengths s
+WHERE tv.employee_id = s.employee_id;
+
+ALTER TABLE tv_weight 
+RENAME COLUMN rank TO tv_rank;
+
+
+--mbti
+UPDATE tv_weight
+SET mbti_tv_weight = 
+    CASE 
+        WHEN SUBSTRING(tv_mbti, 2, 1) = 'S' THEN 1
+        ELSE 0
+    END;
+	
+--disc_word
+UPDATE tv_weight
+SET disc_word_tv_weight =
+    CASE
+        WHEN tv_disc_word = 'Influencer-Steadiness' THEN 1
+        ELSE 0
+    END;
+
+--theme
+UPDATE tv_weight
+SET theme_tv_weight =
+    CASE
+        WHEN tv_theme = 'Restorative' THEN 1
+        ELSE 0
+    END;
+
+
+
+
+-- tv weight untuk kolom numeric
+
+--tambahkan kolom baru untuk tv weight numeric
+
+ALTER TABLE tv_weight
+ADD COLUMN tiki_tv_weight NUMERIC,
+ADD COLUMN pauli_tv_weight NUMERIC,
+ADD COLUMN faxtor_tv_weight NUMERIC,
+ADD COLUMN papi_scores_tv_weight NUMERIC,
+ADD COLUMN rank_tv_weight NUMERIC;
+
+-- tiki tv weight
+UPDATE tv_weight
+SET tiki_tv_weight = 
+    CASE 
+        WHEN tv_tiki IS NULL THEN 0
+        WHEN tv_tiki BETWEEN 7 AND 10 THEN 0.077 / 0.203
+        WHEN tv_tiki BETWEEN 4 AND 6  THEN 0.070 / 0.203
+        WHEN tv_tiki BETWEEN 1 AND 3  THEN 0.503 / 0.203
+        ELSE 0
+    END;
+
+--pauli_tv_weight
+UPDATE tv_weight
+SET pauli_tv_weight =
+    CASE
+        WHEN tv_pauli IS NULL THEN 0
+        WHEN tv_pauli >= 41 THEN 0.071 / 0.174
+        WHEN tv_pauli BETWEEN 21 AND 40 THEN 0.060 / 0.174
+        WHEN tv_pauli <= 20 THEN 0.043 / 0.174
+        ELSE 0
+    END;
+
+--- faxtor_tv_weight
+UPDATE tv_weight
+SET faxtor_tv_weight =
+    CASE
+        WHEN tv_faxtor IS NULL THEN 0
+        WHEN tv_faxtor >= 81 THEN 0.077 / 0.142
+        WHEN tv_faxtor <= 80 THEN 0.065 / 0.142
+        ELSE 0
+    END;
+
+--papi_score tv weight
+
+UPDATE tv_weight
+SET papi_scores_tv_weight =
+    CASE
+        WHEN tv_papi_score IS NULL THEN 0
+        WHEN tv_papi_score >= 7 THEN 0.090 / 0.263
+        WHEN tv_papi_score BETWEEN 4 AND 6 THEN 0.088 / 0.263
+        WHEN tv_papi_score BETWEEN 1 AND 3 THEN 0.085 / 0.263
+        ELSE 0
+    END;
+
+---rank tv weight
+UPDATE tv_weight
+SET rank_tv_weight =
+    CASE
+        WHEN tv_rank IS NULL THEN 0
+        WHEN tv_rank = 1 THEN 0.068 / 0.161
+        WHEN tv_rank > 1 THEN 0.093 / 0.163
+        ELSE 0
+    END;
+
+
+---- menghitung tv weight total
+ALTER TABLE tv_weight
+ADD COLUMN tv_weight_total NUMERIC;
+
+
+UPDATE tv_weight
+SET tv_weight_total =
+(
+    COALESCE(mbti_tv_weight, 0) +
+    COALESCE(disc_word_tv_weight, 0) +
+    COALESCE(theme_tv_weight, 0) +
+    COALESCE(tiki_tv_weight, 0) +
+    COALESCE(pauli_tv_weight, 0) +
+    COALESCE(faxtor_tv_weight, 0) +
+    COALESCE(papi_scores_tv_weight, 0) +
+    COALESCE(rank_tv_weight, 0)
+) / 8.0;
+
+--menghitung match rate tv
+
+ALTER TABLE tv_weight ADD COLUMN tv_match_rate DECIMAL(5,2);
+UPDATE tv_weight 
+SET tv_match_rate = (
+    -- Numeric fields dengan rule: jika nilai >= benchmark = 100%, else (nilai/benchmark)*100
+    (CASE WHEN tv_tiki >= 3 THEN 100.0 ELSE (tv_tiki / 3.0) * 100 END) * 0.142857 +
+    (CASE WHEN tv_pauli >= 83 THEN 100.0 ELSE (tv_pauli / 83.0) * 100 END) * 0.142857 +
+    (CASE WHEN tv_faxtor >= 50 THEN 100.0 ELSE (tv_faxtor / 50.0) * 100 END) * 0.142857 +
+    (CASE WHEN tv_papi_score >= 6.00 THEN 100.0 ELSE (tv_papi_score / 6.00) * 100 END) * 0.142857 +
+    
+    -- Non-numeric fields: jika sama = 100%, else = 0%
+    (CASE WHEN tv_mbti = 'ISTJ' THEN 100.0 ELSE 0 END) * 0.142857 +
+    (CASE WHEN tv_disc_word = 'Influencer-Steadiness' THEN 100.0 ELSE 0 END) * 0.142857 +
+    (CASE WHEN tv_theme = 'Restorative' THEN 100.0 ELSE 0 END) * 0.142857
+);
+
+
+
+
+
