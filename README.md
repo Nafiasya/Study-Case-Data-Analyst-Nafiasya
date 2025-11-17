@@ -104,12 +104,12 @@ Skor dihitung proporsional apabila di bawah benchmark.
 b. Variabel Kategorikal
 Diberikan skor 100% jika cocok, dan 0 jika tidak:
 
-<img width="313" height="209" alt="image" src="https://github.com/user-attachments/assets/04c3f6d3-25b0-470c-8357-6d6d531bf7cb" />
+<img width="924" height="290" alt="image" src="https://github.com/user-attachments/assets/e775bc04-1a48-47aa-8692-8d1af62be35d" />
+
 
 <img width="587" height="413" alt="image" src="https://github.com/user-attachments/assets/ebd399c0-0c1e-490a-ba46-9a6001f2c8cc" />
 
 
-Masing-masing variabel dikalikan bobot 0.25, lalu dijumlahka
 
    Ketiga match rate — TV, TGV, dan Employee — dirancang untuk mengukur kesesuaian karyawan terhadap benchmark talent pada aspek:
 - Trait Value (TV) → gabungan indikator psikometrik numerik & kategorikal
