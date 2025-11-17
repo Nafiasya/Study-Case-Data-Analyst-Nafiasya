@@ -312,6 +312,121 @@ k. theme
 
 <img width="502" height="76" alt="image" src="https://github.com/user-attachments/assets/ee598e53-01d2-49cb-bc29-51381157c69c" />
 
+Dari analisis mendalam terhadap masing-masing variabel, diperoleh pemahaman yang lebih komprehensif mengenai rentang nilai yang berkontribusi paling tinggi terhadap pencapaian category = 1. Informasi ini menjadi dasar penting dalam proses penentuan benchmark talent serta perhitungan final match rate.
+
+Nilai probabilitas yang dihasilkan dari analisis korelasi tersebut selanjutnya digunakan untuk membangun formula perhitungan tv_match_rate, tgv_match_rate, dan employee_match_rate.
+
+4. SQL dan Algoritma
+   dari analisa per heatmap pervariabel maka didapatkan formula sebagai berikut:
+
+a.formula tv_weight
+pertama kita menghitung weight per variabel TV terlebih dahulu
+
+
+   <img width="925" height="331" alt="image" src="https://github.com/user-attachments/assets/ac61739d-4b53-4cfa-aaf9-34dfd3da2676" />
+
+
+
+<img width="941" height="283" alt="image" src="https://github.com/user-attachments/assets/b620664e-9113-49ba-aaae-035684853903" />
+
+
+<img width="833" height="305" alt="image" src="https://github.com/user-attachments/assets/b31a079b-be58-46b3-ad7a-0444f58ae395" />
+
+
+<img width="941" height="390" alt="image" src="https://github.com/user-attachments/assets/ae5faf55-1ab7-4570-b482-cf0872c64c11" />
+
+
+
+<img width="941" height="391" alt="image" src="https://github.com/user-attachments/assets/a33e8053-47ef-480d-a880-6a167153664c" />
+
+
+<img width="831" height="391" alt="image" src="https://github.com/user-attachments/assets/32b2a3cd-d7b8-42bc-96f1-4e0e4f9a6cfb" />
+
+
+<img width="941" height="390" alt="image" src="https://github.com/user-attachments/assets/b197de65-bf66-4f46-b766-494b4c1ed498" />
+
+
+<img width="784" height="388" alt="image" src="https://github.com/user-attachments/assets/3783c7be-bc7f-412a-8d2f-c0d51c286807" />
+
+
+<img width="734" height="489" alt="image" src="https://github.com/user-attachments/assets/47c2f21c-58c1-4ad4-aeee-91292bc45157" />
+
+setelah mendapat nilai weight per variabel TV maka dilakukan perhitungan tv_weight total 
+
+
+<img width="734" height="489" alt="image" src="https://github.com/user-attachments/assets/c5ca6423-f3a9-48d7-aa3f-65e13c966e04" />
+
+
+b. formula tgv_weight
+
+
+<img width="941" height="205" alt="image" src="https://github.com/user-attachments/assets/46657066-e7c4-4bba-a834-3e80b3506766" />
+
+c. mencari talent benchmark
+kriteria talent benchmark adalah employee id yang memenuhi syarat sebagai berikut
+Company_id = 4
+Lama bekerja (years_of_service_months) minimal 61 tahun
+Tv_weight_total >=0.8
+Tgv_weight_total >=1
+
+
+<img width="756" height="264" alt="image" src="https://github.com/user-attachments/assets/d96e664b-af21-402b-acc9-11e5c1d5fca1" />
+
+setelah query dijalankan didapatkan talent benchmark yaitu employee dengan employee_id EMP100667
+berikut adalah data dari talent benchmark atau employee_id EMP100667
+
+
+<img width="416" height="663" alt="image" src="https://github.com/user-attachments/assets/e02e3300-b94e-46a5-ae38-d60891a1ecda" />
+
+data talent benchmark tersebut yang akan digunakan untuk mencari tv_match_rate, tgv_match_rate, employee_match_rate, dan final_match_rate
+
+c. formula tv match rate
+
+
+<img width="941" height="291" alt="image" src="https://github.com/user-attachments/assets/a32c0d8f-51b3-4ef7-b1db-a925337a924b" />
+
+d. formula tgv match rate
+
+
+<img width="941" height="166" alt="image" src="https://github.com/user-attachments/assets/098449bd-2a49-4474-bb78-8f8137fa4973" />
+
+e. formula employee match rate
+
+
+<img width="587" height="413" alt="image" src="https://github.com/user-attachments/assets/34a51b44-6d29-4eff-a67f-c864c9b458a6" />
+
+f. final match rate dan gap rate
+Setelah nilai tv_match_rate, tgv_match_rate, dan employee_match_rate berhasil dihitung, langkah selanjutnya adalah melakukan perhitungan final_match_rate dan gap_match_rate.
+
+Final_match_rate diperoleh dengan menggabungkan ketiga komponen tersebut melalui formula rata-rata terstandarisasi, sehingga mencerminkan tingkat kecocokan komprehensif seorang karyawan terhadap profil benchmark.
+
+Sementara itu, gap_match_rate dihitung untuk mengidentifikasi selisih  antara skor final_match_rate seorang karyawan dengan skor benchmark talent.
+
+
+<img width="941" height="291" alt="image" src="https://github.com/user-attachments/assets/a88a9145-7bcb-472a-9cf4-6fd77fd27b14" />
+
+g. tabel output
+Berikut adalah hasil output SQL 
+
+
+<img width="941" height="283" alt="image" src="https://github.com/user-attachments/assets/e53ea4be-54f6-41f3-a7b5-7353cf42cbf4" />
+
+
+
+<img width="941" height="261" alt="image" src="https://github.com/user-attachments/assets/f41c5cad-0212-4790-bfd9-5e4ba7c3a72d" />
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
