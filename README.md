@@ -34,7 +34,7 @@ D. Insight Data
    <img width="756" height="275" alt="image" src="https://github.com/user-attachments/assets/347e75ca-8a1e-462e-be2a-d6fdf85ae8a1" />
 
 5. Top 3 directorate_id pada Top 25% final_match_rate
-<img width="655" height="295" alt="image" src="https://github.com/user-attachments/assets/9eaa131b-d17b-41ba-a71c-205d65562254" />
+  <img width="655" height="295" alt="image" src="https://github.com/user-attachments/assets/9eaa131b-d17b-41ba-a71c-205d65562254" />
 
 6. Top 3 area_id pada Top 25% final_match_rate
    <img width="641" height="263" alt="image" src="https://github.com/user-attachments/assets/b64e7f54-55bc-470b-a1c3-f0d817d5a1d9" />
@@ -116,6 +116,46 @@ Diberikan skor 100% jika cocok, dan 0 jika tidak:
 - Talent Group Values (TGV) → kecocokan terhadap karakteristik perilaku dan kognitif
 - Employee Profile → kesesuaian terhadap data employee termasuk masa kerja employee
 Final Match Rate memberikan penilaian komprehensif dengan pendekatan multi-dimensi yang mempertimbangkan psikometrik, perilaku, data employee secara seimbang.
+
+F. EDA, SQL dan Algoritma
+1. Data Preparation
+   
+a. Normalisasi Data Rating
+Pada tahap awal, dilakukan proses normalisasi terhadap variabel rating untuk memastikan data berada dalam rentang nilai standar yaitu 1 hingga 5. Hal ini diperlukan karena ditemukan adanya outlier, yaitu nilai rating 6 dan 99, yang berada jauh di luar kisaran yang valid dan berpotensi mengganggu kualitas analisis.
+
+<img width="340" height="216" alt="image" src="https://github.com/user-attachments/assets/fc4171ee-446b-47f6-9a1f-1fa1680cbdad" />
+
+
+Untuk menangani outlier tersebut, digunakan metode median imputation, di mana nilai–nilai rating yang berada di luar rentang valid diganti dengan nilai median dari distribusi rating. Pendekatan ini dipilih karena median lebih robust terhadap pencilan (robust to extreme values) dibandingkan mean, sehingga menghasilkan distribusi data yang lebih representatif.
+
+Setelah proses imputasi dilakukan, distribusi rating menjadi lebih stabil dan konsisten dengan rentang nilai standar. Berikut adalah distribusi nilai rating setelah dilakukan outlier handling menggunakan median imputation
+
+<img width="447" height="200" alt="image" src="https://github.com/user-attachments/assets/d60edf35-25ad-4482-a7bc-f7a52b063259" />
+
+b. Penanganan Missing Values dan Encoding Variabel Kategorikal
+Sebelum dilakukan analisis korelasi antarvariabel, dilakukan proses data cleaning tambahan untuk memastikan kualitas data sebagai berikut:
+
+1. Imputasi Missing Values
+   Kolom iq dan gtq memiliki nilai hilang (nulls), sehingga dilakukan imputasi menggunakan nilai mean, karena kedua variabel ini bersifat numerik dan berdistribusi relatif stabil.
+   Kolom mbti memiliki nilai hilang, sehingga diimputasi menggunakan nilai modus (frekuensi terbanyak), karena mbti adalah variabel kategorikal.
+
+2. Encoding Variabel Kategorikal
+   Kolom disc_word dan mbti, yang merupakan variabel kategorikal, kemudian dilakukan proses label encoding untuk mengonversi nilai kategori menjadi format numerik.
+   Encoding diperlukan agar variabel tersebut dapat digunakan dalam analisis numerik, seperti korelasi, modelling machine learning, atau perhitungan match rate.
+
+  <img width="941" height="339" alt="image" src="https://github.com/user-attachments/assets/ef81e12c-b5da-47d2-8044-31ab9a1d262a" />
+
+
+c. Pembuatan Kolom Category
+Untuk keperluan analisis klasifikasi sederhana, dibuat sebuah kolom baru bernama category dengan aturan sebagai berikut:
+- Jika rating = 5, maka category = 1
+- Jika rating ≠ 5, maka category = 0
+Kategori ini digunakan untuk mengelompokkan karyawan berdasarkan performa tertinggi (rating 5) dan bukan performa tertinggi.
+
+<img width="409" height="399" alt="image" src="https://github.com/user-attachments/assets/eb350434-ee63-4601-97d2-d9ded52b59fb" />
+
+
+
 
 
 
