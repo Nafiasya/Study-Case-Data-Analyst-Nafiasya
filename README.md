@@ -145,6 +145,11 @@ Sebelum dilakukan analisis korelasi antarvariabel, dilakukan proses data cleanin
 
   <img width="941" height="339" alt="image" src="https://github.com/user-attachments/assets/ef81e12c-b5da-47d2-8044-31ab9a1d262a" />
 
+  
+variabel scale_code dan theme juga terlebih dilakukan proses label encoding untuk mengubah data kategorikal menjadi numerik sehingga dapat diolah dalam perhitungan korelasi.
+
+<img width="904" height="247" alt="image" src="https://github.com/user-attachments/assets/6452f0fe-f94d-48a7-b409-3e861cefbfc8" />
+
 
 c. Pembuatan Kolom Category
 Untuk keperluan analisis klasifikasi sederhana, dibuat sebuah kolom baru bernama category dengan aturan sebagai berikut:
@@ -154,11 +159,46 @@ Kategori ini digunakan untuk mengelompokkan karyawan berdasarkan performa tertin
 
 <img width="409" height="399" alt="image" src="https://github.com/user-attachments/assets/eb350434-ee63-4601-97d2-d9ded52b59fb" />
 
+2. Analisa Korelasi
+
+a. Korelasi Employee dengan performance
+Tahap selanjutnya adalah melakukan analisis korelasi antara data employee dan data performance menggunakan heatmap correlation matrix. Visualisasi ini memberikan gambaran mengenai kekuatan hubungan antara masing-masing variabel dan kategori employee dengan rating terbaik (category = 1).
+
+<img width="886" height="634" alt="image" src="https://github.com/user-attachments/assets/08073641-3e8b-460e-bdcf-b0236e24590d" />
 
 
+Berdasarkan hasil analisis, diperoleh bahwa variabel-variabel employee yang memiliki kontribusi paling signifikan terhadap probabilitas seorang karyawan masuk kategori performa tertinggi adalah sebagai berikut (diurutkan berdasarkan skor probabilitas terbesar):
+1.years_of_service_months
+2. education_id
+3. directorate_id
+4. company_id
+5. area_id
+
+Variabel-variabel tersebut memiliki korelasi positif yang lebih kuat dibanding variabel lainnya, sehingga berpotensi menjadi faktor penting dalam pembentukan performa employee.
 
 
+b.	Analisa korelasi data profiles_psych dengan data performance 
+Selanjutnya dilakukan analisis korelasi antara data profile_psych dengan performance setelah seluruh variabel kategorikal melalui proses label encoding. Analisis ini bertujuan untuk mengidentifikasi variabel psikologis yang paling berpengaruh terhadap probabilitas karyawan memperoleh category = 1 (rating tertinggi).
 
+<img width="783" height="699" alt="image" src="https://github.com/user-attachments/assets/7e261329-64ea-4076-b9da-0e8e18d1dd01" />
+
+
+Berdasarkan hasil evaluasi korelasi, variabel–variabel dalam profile_psych yang memiliki tingkat pengaruh terbesar terhadap kategori kinerja (category = 1), secara berurutan dari yang paling signifikan hingga yang paling rendah adalah sebagai berikut:
+1. Tiki
+2. MBTI
+3. Pauli
+4. Faxtor
+5. Disc_word
+
+c. Analisis Korelasi antara PAPI Score, Strengths, dan Performance
+
+<img width="841" height="775" alt="image" src="https://github.com/user-attachments/assets/1c5d86b5-5ec4-44eb-8fce-d4713295677a" />
+
+
+Berdasarkan hasil analisis, variabel–variabel dari kelompok papi_score dan strengths yang memberikan kontribusi paling besar terhadap kategori = 1, dari yang paling berpengaruh hingga paling rendah, adalah sebagai berikut:
+1. Rank
+2. PAPI Score
+3. Theme
 
 
 
