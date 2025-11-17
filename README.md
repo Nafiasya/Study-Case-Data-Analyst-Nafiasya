@@ -39,6 +39,81 @@ D. Insight Data
 6. Top 3 area_id pada Top 25% final_match_rate
    <img width="641" height="263" alt="image" src="https://github.com/user-attachments/assets/b64e7f54-55bc-470b-a1c3-f0d817d5a1d9" />
 
+E. Dampak Bisnis
+1. Metrik objektif untuk keputusan promosi
+2. Pendekatan terstandarisasi untuk evaluasi talenta
+3. Insight berbasis data untuk pengembangan karyawan
+
+F. Final Sucess Formula
+Final Match Rate dihitung untuk mengukur tingkat kesesuaian seorang karyawan terhadap benchmark talent berdasarkan tiga dimensi utama: Trait Values (TV), Trait Govern Values (TGV), serta Employee Profile Fit.
+Nilai akhir dihitung menggunakan formula:
+<img width="582" height="65" alt="image" src="https://github.com/user-attachments/assets/50b843b0-fef4-4ebe-9352-862e0abf1dcd" />
+Masing-masing komponen disusun menggunakan aturan penilaian yang menggabungkan indikator numerik dan indikator kategorikal sesuai standar benchmark talent.
+
+1. TV Match Rate
+
+TV Match Rate disusun dari dua kelompok penilaian: (a) indikator numerik dan (b) indikator kategorikal.
+Semua indikator diberikan bobot yang sama sebesar 14,2857% (1/7), sehingga total bobot adalah 100%.
+
+a. Indikator Numerik 
+Empat variabel numerik dievaluasi dengan prinsip:
+- Jika nilai memenuhi atau melampaui benchmark → skor 100%
+- Jika tidak memenuhi → skor proporsional
+- 
+  <img width="405" height="97" alt="image" src="https://github.com/user-attachments/assets/85bacf45-34eb-4fa0-a32a-b9da798d44d7" />
+  
+  Indikator numerik yang digunakan:
+  
+  <img width="303" height="241" alt="image" src="https://github.com/user-attachments/assets/013bcb56-b48f-4d6f-9aae-4117be79e6cc" />
+
+b. Indikator Kategorikal (Exact Match)
+Tiga variabel kategorikal diberikan skor 100% apabila exact match dengan benchmark talent, dan 0% bila tidak cocok.
+
+Indikator kategorikal:
+
+<img width="382" height="194" alt="image" src="https://github.com/user-attachments/assets/70a14907-bfcb-4cac-91ab-6592b5be6578" />
+
+2. TGV Match Rate
+
+TGV Match Rate dihitung dari tiga indikator kategorikal yang masing-masing mewakili dimensi psikologis lain.
+Setiap indikator bernilai 100% jika cocok, dan 0 jika tidak:
+
+<img width="543" height="203" alt="image" src="https://github.com/user-attachments/assets/0e422c78-2651-4748-a4cb-d38777c6a5b8" />
+
+TGV Match Rate dihitung dengan rata-rata:
+
+<img width="612" height="79" alt="image" src="https://github.com/user-attachments/assets/8075d93d-665c-49ef-ba99-8f67aff4cc7a" />
+
+3. Employee Match Rate
+Employee Match Rate menggunakan empat variabel, masing-masing memiliki bobot 25%.
+
+a. Variabel Numerik
+Years of service mempunyai Benchmark: ≥ 109 bulan
+Skor dihitung proporsional apabila di bawah benchmark.
+
+b. Variabel Kategorikal
+Diberikan skor 100% jika cocok, dan 0 jika tidak:
+
+<img width="313" height="209" alt="image" src="https://github.com/user-attachments/assets/04c3f6d3-25b0-470c-8357-6d6d531bf7cb" />
+
+Masing-masing variabel dikalikan bobot 0.25, lalu dijumlahka
+
+   Ketiga match rate — TV, TGV, dan Employee — dirancang untuk mengukur kesesuaian karyawan terhadap benchmark talent pada aspek:
+- Trait Value (TV) → gabungan indikator psikometrik numerik & kategorikal
+- Talent Group Values (TGV) → kecocokan terhadap karakteristik perilaku dan kognitif
+- Employee Profile → kesesuaian terhadap data employee termasuk masa kerja employee
+Final Match Rate memberikan penilaian komprehensif dengan pendekatan multi-dimensi yang mempertimbangkan psikometrik, perilaku, data employee secara seimbang.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
